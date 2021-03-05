@@ -6,6 +6,10 @@ public class EnemyMove : MonoBehaviour
     bool isStart = false;
     Distance distanceInstance;
 
+    [SerializeField] float slowSpeed;
+    [SerializeField] float midSpeed;
+    [SerializeField] float fastSpeed;
+
     IEnumerator DelayStart()
     {
         yield return new WaitForSeconds(1.5f);
@@ -34,13 +38,13 @@ public class EnemyMove : MonoBehaviour
         if (isStart)
         {
             if (distanceInstance.distance <= 5)
-                transform.Translate(Vector3.right * 1 * Time.deltaTime);
+                transform.Translate(Vector3.right * slowSpeed * Time.deltaTime);
 
             if (distanceInstance.distance > 5 && distanceInstance.distance <= 15)
-                transform.Translate(Vector3.right * 3 * Time.deltaTime);
+                transform.Translate(Vector3.right * midSpeed * Time.deltaTime);
 
             if (distanceInstance.distance > 15)
-                transform.Translate(Vector3.right * 10 * Time.deltaTime);
+                transform.Translate(Vector3.right * fastSpeed * Time.deltaTime);
         }
     }
 }
